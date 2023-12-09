@@ -1,7 +1,3 @@
-import datetime as dt
-import pandas as pd
-from sqlalchemy import create_engine
-
 from airflow.utils.dates import days_ago
 from airflow.decorators import dag, task
 from airflow.providers.postgres.hooks.postgres import PostgresHook
