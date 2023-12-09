@@ -17,13 +17,14 @@ def taskflow():
 		return urls
 
 	@task
-	def show_urls(url):
-		print(url)
+	def show_urls(urls):
+		for url in urls:
+			print(urls)
 
 	@task
 	def say_hello():
 		print('hello world')
 
-	show_urls.partial().expand(url=get_urls()) >> say_hello()
+	show_urls(urls=get_urls()) >> say_hello()
 
 taskflow()
