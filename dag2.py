@@ -16,12 +16,6 @@ def taskflow():
 	def say_hello():
 		print('hello world')
 
-	test_spark = SparkSubmitOperator(
-		task_id='test_spark',
-		application='/incluce/pyspark_script.py',
-		conn_id='spark_master'
-	)
-
 	@task
 	def test_gx():
 		context = gx.get_context()
