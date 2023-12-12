@@ -1,5 +1,6 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, regexp_replace
+import great_expectations as gx
 
 from airflow.utils.dates import days_ago
 from airflow.decorators import dag, task
@@ -21,6 +22,13 @@ def taskflow():
 		conn_id='spark_master'
 	)
 
-	say_hello() >> test_spark
+	@task
+	def test_gx():
+		context = gx.get_context()
+		context = context.convert_to_file_context()
+		print(context)
+
+	# say_hello() >> test_spark
+	test_gx()
 
 taskflow()
