@@ -1,11 +1,8 @@
-from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, regexp_replace
 import great_expectations as gx
 
 from airflow.utils.dates import days_ago
 from airflow.decorators import dag, task
 from airflow.models import Variable
-from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
 
 URL = Variable.get('url')
 
